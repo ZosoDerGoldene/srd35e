@@ -1,0 +1,8 @@
+{
+  "name": "srd35e",
+  "title": "SRD 3.5e",
+  "description": "An SRD 3.5e implementation from scratch, for fun",
+  "version": "0.0.1",
+  "author": "Zoso der Goldene",
+  "minimumCoreVersion": "0.7.9"
+}
