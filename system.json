@@ -6,6 +6,9 @@
   "author": "Zoso der Goldene",
   "minimumCoreVersion": "0.7.9",
   "compatibleCoreVersion": "0.8.0",
+  "socket": true,
+  "esmodules": ["srd35e.js"],
+  "primaryTokenAttribute": "attributes.hp",
   "url": "https://github.com/ZosoDerGoldene/srd35e",
   "manifest": "https://raw.githubusercontent.com/ZosoDerGoldene/srd35e/master/system.json",
   "download": "https://github.com/ZosoDerGoldene/srd35e/archive/master.zip"
