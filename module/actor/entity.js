@@ -11,8 +11,9 @@ export class ActorSRD35E extends Actor {
         const actorData = this.data;
         const data = actorData.data;
         for (let [id, abl] of Object.entries(data.abilities)) {
-            let s = calculate_effective_modifiers(abl.modifiers);
-            abl.mod = Math.floor((abl.baseValue + s - 10) / 2);
+            let modifier = calculate_effective_modifiers(abl.modifiers);
+            abl.value = abl.baseValue + modifier;
+            abl.mod = Math.floor((abl.value - 10) / 2);
         }
     }
 

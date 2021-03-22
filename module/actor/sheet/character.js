@@ -3,6 +3,7 @@ export class ActorSheet_SRD35E_Character extends ActorSheet {
         return mergeObject(
             super.defaultOptions,
             {
+                classes: ["srd35e", "sheet", "actor", "character"],
                 width: 725,
                 height: 840
             });

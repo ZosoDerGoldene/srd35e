@@ -54,8 +54,6 @@ var modifierTypes = {
     "size" : {
         "stacks" : false
     }
-
-
 }
 
 export function calculate_effective_modifiers(modifiers) {
@@ -69,6 +67,10 @@ function _calc_effective_modifiers(status, modifier) {
     let isBonus = (modifier.value > 0);
     let list = status.seen?.filter(item => (item.modifierType === modifier.modifierType) && ((item.value * modifier.value) > 0));
     // TODO: Check whether modifierTypes contains the modifierType
+    if (modifierTypes[modifier.modifierType] === undefined) {
+        console.log("undefined modifier type: "+modifier.modifierType);
+        return 0;
+    }
     if (modifier.stacks || modifierTypes[modifier.modifierType].stacks) {
         let testSet = list?.filter(item => item.source === modifier.source);
         if (testSet && (testSet.length > 0)) {
