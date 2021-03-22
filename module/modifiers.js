@@ -1,3 +1,4 @@
+// TODO: Make modifierTypes SRD specific
 var modifierTypes = {
     "unnamed" : {
         "stacks" : true
@@ -58,18 +59,16 @@ var modifierTypes = {
 }
 
 export function calculate_effective_modifiers(modifiers) {
-    // There are only going to be a handful of boni at any time, so a flat array is going to beat a hastable
+    // There are only going to be a handful of modifiers at any time, so a flat array is going to beat a hastable
     let status = {"value": 0, "seen" : []};
-    console.log("Status initialized");
     modifiers?.reduce(_calc_effective_modifiers, status);
-    console.log("reduced");
     return status.value;
 }
 
 function _calc_effective_modifiers(status, modifier) {
-    console.log(status);
     let isBonus = (modifier.value > 0);
     let list = status.seen?.filter(item => (item.modifierType === modifier.modifierType) && ((item.value * modifier.value) > 0));
+    // TODO: Check whether modifierTypes contains the modifierType
     if (modifier.stacks || modifierTypes[modifier.modifierType].stacks) {
         let testSet = list?.filter(item => item.source === modifier.source);
         if (testSet && (testSet.length > 0)) {
