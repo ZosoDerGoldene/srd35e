@@ -8,6 +8,7 @@
   "compatibleCoreVersion": "0.8.0",
   "socket": true,
   "esmodules": ["srd35e.js"],
+  "styles": ["srd35e.css"],
   "primaryTokenAttribute": "attributes.hp",
   "url": "https://github.com/ZosoDerGoldene/srd35e",
   "manifest": "https://raw.githubusercontent.com/ZosoDerGoldene/srd35e/master/system.json",

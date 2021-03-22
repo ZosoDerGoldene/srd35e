@@ -1,0 +1,15 @@
+{
+  "SRD35E.Name": "Name",
+  "SRD35E.Str": "Strength",
+  "SRD35E.Dex": "Dexterity",
+  "SRD35E.Con": "Constitution",
+  "SRD35E.Int": "Intelligence",
+  "SRD35E.Wis": "Wisdom",
+  "SRD35E.Cha": "Charisma",
+  "SRD35E.Attributes": "Attributes",
+  "SRD35E.Inventory": "Inventory",
+  "SRD35E.Features": "Features",
+  "SRD35E.Spellbook": "Spellbook",
+  "SRD35E.Effects": "Effects",
+  "SRD35E.Biography": "Biography"
+}
