@@ -1,11 +1,20 @@
 {
-  "SRD35E.Name": "Name",
-  "SRD35E.Str": "Strength",
-  "SRD35E.Dex": "Dexterity",
-  "SRD35E.Con": "Constitution",
-  "SRD35E.Int": "Intelligence",
-  "SRD35E.Wis": "Wisdom",
-  "SRD35E.Cha": "Charisma",
+  "SRD35E.NAME": "Name",
+
+  "SRD35E.ABILITY_STR": "Strength",
+  "SRD35E.ABILITY_DEX": "Dexterity",
+  "SRD35E.ABILITY_CON": "Constitution",
+  "SRD35E.ABILITY_INT": "Intelligence",
+  "SRD35E.ABILITY_WIS": "Wisdom",
+  "SRD35E.ABILITY_CHA": "Charisma",
+  "SRD35E.ABILITY_STR_TLA": "STR",
+  "SRD35E.ABILITY_DEX_TLA": "DEX",
+  "SRD35E.ABILITY_CON_TLA": "CON",
+  "SRD35E.ABILITY_INT_TLA": "INT",
+  "SRD35E.ABILITY_WIS_TLA": "WIS",
+  "SRD35E.ABILITY_CHA_TLA": "CHA",
+
+
   "SRD35E.Attributes": "Attributes",
   "SRD35E.Inventory": "Inventory",
   "SRD35E.Features": "Features",
