@@ -11,20 +11,26 @@ export class ActorSRD35E extends Actor {
     prepareDerivedData() {
         const actorData = this.data;
         const data = actorData.data;
+        /*
+        ability scores
+         */
         for (let [id, abl] of Object.entries(data.abilities)) {
             let modifier = effective_modifiers(abl.modifiers);
             abl.value = abl.baseValue + modifier;
             abl.mod = Math.floor((abl.value - 10) / 2);
             abl.label = SRD35E.abilities_tla[id];
         }
+        /*
+        Armor class
+         */
         let ac = data.attributes.ac;
-        ac.value = ac.baseValue + effective_modifiers(ac.modifiers);
-        ac.flatFooted = ac.baseValue + effective_modifiers(ac.modifiers, (modifier) => modifier.source !== "dexterity");
-        ac.touch = ac.baseValue + effective_modifiers(ac.modifiers, (modifier) => modifier.modifierType !== "shield" && modifier.modifierType !== "armor");
-        console.log(getProperty(data,"abilities.dex"));
+        ac.value = 10 + effective_modifiers(ac.modifiers, data);
+        ac.flatFooted = 10 + effective_modifiers(ac.modifiers, data,
+            (modifier) => !(modifier.definition === "abilities.dex.mod" && modifier.isBonus));
+        ac.touch = 10 + effective_modifiers(ac.modifiers, data,
+            (modifier) => modifier.modifierType !== "shield" && modifier.modifierType !== "armor");
     }
 
     _prepareCharacterData(actorData) {
-
     }
 }

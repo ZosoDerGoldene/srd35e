@@ -37,11 +37,7 @@
         },
         "attributes" : {
           "ac" : {
-            "baseValue" : 10,
-            "modifiers" : [
-              {"value" :  8, "modifierType" : "armor"},
-              {"value" :  2, "modifierType" : "shield"},
-              {"value" :  3, "modifierType" : "ability", "source" : "dexterity"}]
+            "modifiers" : [{"definition" :  "abilities.dex.mod", "modifierType" : "ability", "source" : "dexterity"}]
           },
           "hp" : {
             "value" : 10,
