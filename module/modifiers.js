@@ -1,58 +1,76 @@
 // TODO: Make modifierTypes SRD specific
 var modifierTypes = {
     "unnamed" : {
-        "stacks" : true
+        "stacks" : true,
+        "bonusOnly" : false
     },
     "alchemical" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "armor" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "circumstance" : {
-        "stacks" : true
+        "stacks" : true,
+        "bonusOnly" : false
     },
     "competence" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "deflection" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "dodge" : {
-        "stacks" : true
+        "stacks" : true,
+        "bonusOnly" : true
     },
     "enhancement" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "insight" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "luck" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "morale" : { // TODO: Morale bonuses do not apply to nonintelligent creatures
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "natural armor" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "profane" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "racial" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "resistance" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "sacred" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     },
     "shield" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : true
     },
     "size" : {
-        "stacks" : false
+        "stacks" : false,
+        "bonusOnly" : false
     }
 }
 
@@ -66,10 +84,15 @@ export function calculate_effective_modifiers(modifiers) {
 function _calc_effective_modifiers(status, modifier) {
     let isBonus = (modifier.value > 0);
     let list = status.seen?.filter(item => (item.modifierType === modifier.modifierType) && ((item.value * modifier.value) > 0));
-    // TODO: Check whether modifierTypes contains the modifierType
+
     if (modifierTypes[modifier.modifierType] === undefined) {
         console.log("undefined modifier type: "+modifier.modifierType);
-        return 0;
+        return status;
+    } else {
+        if (modifierTypes[modifier.modifierType].bonusOnly && (modifier.value < 0)) {
+            console.log("encountered penalty of type "+modifier.modifierType+"; disregarding");
+            return status;
+        }
     }
     if (modifier.stacks || modifierTypes[modifier.modifierType].stacks) {
         let testSet = list?.filter(item => item.source === modifier.source);
