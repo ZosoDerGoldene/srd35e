@@ -669,11 +669,11 @@
     margin-bottom: -3px;
 }
 .srd35e.sheet.actor .ability-scores .ability input.ability-score {
-    height: 30px;
-    width: 36px;
+    height: 28px;
+    width: 24px;
     margin: 0 auto;
     line-height: 32px;
-    font-size: 24px;
+    font-size: 16px;
 }
 .srd35e.sheet.actor .ability-scores .ability .ability-modifiers {
     height: 24px;

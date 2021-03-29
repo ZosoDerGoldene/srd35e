@@ -1,82 +1,4 @@
-// TODO: Make modifierTypes SRD specific
-var modifierTypes = {
-    "unnamed" : {
-        "stacks" : true,
-        "bonusOnly" : false
-    },
-    "ability" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "alchemical" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "armor" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "circumstance" : {
-        "stacks" : true,
-        "bonusOnly" : false
-    },
-    "competence" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "deflection" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "dodge" : {
-        "stacks" : true,
-        "bonusOnly" : true
-    },
-    "enhancement" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "insight" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "luck" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "morale" : { // TODO: Morale bonuses do not apply to nonintelligent creatures
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "natural armor" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "profane" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "racial" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "resistance" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "sacred" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    },
-    "shield" : {
-        "stacks" : false,
-        "bonusOnly" : true
-    },
-    "size" : {
-        "stacks" : false,
-        "bonusOnly" : false
-    }
-}
+import {SRD35E} from "./config.js";
 
 export function effective_modifiers(modifiers, data, modifierFilter) {
     // There are only going to be a handful of modifiers at any time, so a flat array is going to beat a hastable
@@ -94,17 +16,17 @@ function _calc_effective_modifiers(status, modifier) {
     let isBonus = modifier.isBonus;
     let list = status.seen?.filter(item => (item.modifierType === modifier.modifierType) && ((item.value * value) > 0));
 
-    if (modifierTypes[modifier.modifierType] === undefined) {
+    if (SRD35E.modifierTypes[modifier.modifierType] === undefined) {
         console.log("undefined modifier type: "+modifier.modifierType);
         return status;
     } else {
-        if (modifierTypes[modifier.modifierType].bonusOnly && (value < 0)) {
+        if (SRD35E.modifierTypes[modifier.modifierType].bonusOnly && (value < 0)) {
             console.log("encountered penalty of type "+modifier.modifierType+"; disregarding");
             return status;
         }
     }
 
-    if (modifier.stacks || modifierTypes[modifier.modifierType].stacks) {
+    if (modifier.stacks || SRD35E.modifierTypes[modifier.modifierType].stacks) {
         let testSet = list?.filter(item => item.source === modifier.source);
         if (testSet && (testSet.length > 0)) {
             // There are already effects from the same source at work

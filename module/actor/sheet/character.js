@@ -5,7 +5,9 @@ export class ActorSheet_SRD35E_Character extends ActorSheet {
             {
                 classes: ["srd35e", "sheet", "actor", "character"],
                 width: 725,
-                height: 840
+                height: 840,
+                scrollY: [".tab.details"],
+                tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "description"}]
             });
     }
 

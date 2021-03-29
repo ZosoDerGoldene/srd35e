@@ -45,6 +45,13 @@
             "min" : -10,
             "temp": 0,
             "temp_max": 0
+          },
+          "race" : ""
+        },
+        "details": {
+          "biography": {
+            "value": "",
+            "public": ""
           }
         }
       }
@@ -66,12 +73,12 @@
     }
   },
   "Item": {
-    "types" : ["modifier"],
+    "types" : ["race"],
     "templates" : [],
-    "modifier" : {
-      "value" : 2,
-      "type" : null,
-      "source" : null
+    "race" : {
+      "templates" : [],
+      "name" : "",
+      "modifiers" : []
     }
   }
 }

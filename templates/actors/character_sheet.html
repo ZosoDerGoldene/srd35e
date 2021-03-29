@@ -11,6 +11,18 @@
             <div>
                 AC: {{data.attributes.ac.value}} Flat-Footed: {{data.attributes.ac.flatFooted}} Touch: {{data.attributes.ac.touch}}
             </div>
+        </section>
+    </header>
+
+    {{!-- Character Sheet Navigation --}}
+
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="attributes">{{ localize 'SRD35E.Attributes' }}</a>
+        <a class="item" data-tab="biography">{{ localize 'SRD35E.Biography' }}</a>
+    </nav>
+    <section class="sheet-body">
+
+        <div class="tab attributes flexrow" data-group="primary" data-tab="attributes">
 
             {{!-- Ability Scores --}}
             <ul class="ability-scores attributes flexrow">
@@ -25,8 +37,17 @@
                 </li>
                 {{/each}}
             </ul>
-        </section>
-    </header>
+        </div>
 
+        {{!-- Biography Tab --}}
+        <div class="tab" data-group="primary" data-tab="biography">
+            <div class="biography">
+                <input class="ability-score" name="data.attributes.ac.value" value="{{data.attributes.ac.value}}"/>
+            </div>
+            <div class="biography">
+                {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+            </div>
+        </div>
 
+    </section>
 </form>
