@@ -44,21 +44,17 @@ export class ActorSRD35E extends Actor {
         let race = this.items.filter((item) => item.type === 'race')[0];
         if (race) {
             for (let modifier of race?.data?.data?.modifiers) {
-                switch (modifier.target) {
-                    case 'abilities.dex':
-                        this.data.data.abilities.dex.modifiers.push(modifier);
-                        break;
-                    case 'abilities.con':
-                        this.data.data.abilities.con.modifiers.push(modifier);
-                        break;
-                    case 'abilities.int':
-                        this.data.data.abilities.int.modifiers.push(modifier);
-                        break;
-                    case 'abilities.cha':
-                        this.data.data.abilities.cha.modifiers.push(modifier);
-                        break;
-                }
+                this.getProperty(modifier.target).modifiers.push(modifier);
             }
         }
+    }
+
+    getProperty(name) {
+        let elements = name.split('.');
+        let obj = this.data.data;
+        for (let elem of elements) {
+            obj = obj[elem];
+        }
+        return obj;
     }
 }
