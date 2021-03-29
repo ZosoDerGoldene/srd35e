@@ -29,7 +29,7 @@ export class ActorSRD35E extends Actor {
             abl.label = SRD35E.abilities_tla[id];
         }
         /*
-        Armor class
+        armor class
          */
         let ac = data.attributes.ac;
         ac.value = 10 + effective_modifiers(ac.modifiers, data);
@@ -44,11 +44,12 @@ export class ActorSRD35E extends Actor {
         let race = this.items.filter((item) => item.type === 'race')[0];
         if (race) {
             for (let modifier of race?.data?.data?.modifiers) {
-                this.getProperty(modifier.target).modifiers.push(modifier);
+                this.getProperty(modifier.target).push(modifier);
             }
         }
     }
 
+    // TODO: Factor this out into a utility function
     getProperty(name) {
         let elements = name.split('.');
         let obj = this.data.data;
