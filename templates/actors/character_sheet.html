@@ -42,10 +42,9 @@
         {{!-- Biography Tab --}}
         <div class="tab" data-group="primary" data-tab="biography">
             <div class="biography">
-                <input class="ability-score" name="data.attributes.ac.value" value="{{data.attributes.ac.value}}"/>
-            </div>
-            <div class="biography">
-                {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+                <a class="effect-control" data-action="create" title="Create Effect">
+                    <i class="fas fa-plus"></i>Add
+                </a>
             </div>
         </div>
 

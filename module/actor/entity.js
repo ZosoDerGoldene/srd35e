@@ -49,6 +49,12 @@ export class ActorSRD35E extends Actor {
         }
     }
 
+    async updateEmbeddedEntity(embeddedName, data, options = {}) {
+        if (embeddedName === 'ActiveEffect') {
+            return await super.updateEmbeddedEntity(embeddedName, data, options);
+        }
+    }
+
     // TODO: Factor this out into a utility function
     getProperty(name) {
         let elements = name.split('.');
