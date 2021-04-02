@@ -1,8 +1,8 @@
-import {SRD35E} from "./config.js";
+import {SRD35E} from './config.js';
 
 export function effective_modifiers(modifiers, data, modifierFilter) {
     // There are only going to be a handful of modifiers at any time, so a flat array is going to beat a hastable
-    let status = {"value": 0, "seen" : [], "data" : data};
+    let status = {'value': 0, 'seen' : [], 'data' : data};
     modifiers?.forEach((modifier) => {
         if (modifier.definition) modifier.value = getProperty(status.data, modifier.definition);
         modifier.isBonus = (modifier.value > 0);

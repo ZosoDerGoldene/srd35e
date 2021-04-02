@@ -34,34 +34,13 @@ export class ActorSRD35E extends Actor {
         let ac = data.attributes.ac;
         ac.value = 10 + effective_modifiers(ac.modifiers, data);
         ac.flatFooted = 10 + effective_modifiers(ac.modifiers, data,
-            (modifier) => !((modifier.definition === "abilities.dex.mod" && modifier.isBonus) || modifier.modifierType === 'dodge'));
+            (modifier) => !((modifier.definition === 'abilities.dex.mod' && modifier.isBonus) || modifier.modifierType === 'dodge'));
         ac.touch = 10 + effective_modifiers(ac.modifiers, data,
-            (modifier) => modifier.modifierType !== "shield" && modifier.modifierType !== "armor");
+            (modifier) => modifier.modifierType !== 'shield' && modifier.modifierType !== 'armor');
     }
 
     prepareEmbeddedEntities() {
         super.prepareEmbeddedEntities();
         let race = this.items.filter((item) => item.type === 'race')[0];
-        if (race) {
-            for (let modifier of race?.data?.data?.modifiers) {
-                this.getProperty(modifier.target).modifiers.push(modifier);
-            }
-        }
-    }
-
-    async updateEmbeddedEntity(embeddedName, data, options = {}) {
-        if (embeddedName === 'ActiveEffect') {
-            return await super.updateEmbeddedEntity(embeddedName, data, options);
-        }
-    }
-
-    // TODO: Factor this out into a utility function
-    getProperty(name) {
-        let elements = name.split('.');
-        let obj = this.data.data;
-        for (let elem of elements) {
-            obj = obj[elem];
-        }
-        return obj;
     }
 }

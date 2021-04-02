@@ -434,6 +434,7 @@
     border-bottom: none;
 }
 .srd35e.sheet .items-list .item .item-name {
+    width: 50%;
     color: #191813;
 }
 .srd35e.sheet .items-list .item .item-name .item-image {
@@ -461,6 +462,9 @@
     font-family: "Scala Sans", sans-serif;
     text-align: left;
     font-size: 16px;
+}
+.srd35.sheet .items-list .item .effect-name {
+    width: 50%;
 }
 .srd35e.sheet .effects .item .effect-source,
 .srd35e.sheet .effects .item .effect-duration,

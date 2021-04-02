@@ -1,37 +1,35 @@
-export class ActorSheetSRD35ECharacter extends ActorSheet {
+export class ItemSheetSRD35ERace extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(
             super.defaultOptions,
             {
-                classes: ['srd35e', 'sheet', 'actor', 'character'],
+                classes: ['srd35e', 'sheet', 'item', 'race'],
                 width: 725,
-                height: 840,
-                scrollY: ['.tab.details'],
-                tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'description'}]
+                height: 840
             });
     }
 
     static get name() {
-        return 'SRD35E.CharacterSheet';
+        return 'SRD35E.RaceSheet';
     }
 
     get template() {
-        return 'systems/srd35e/templates/actors/character_sheet.html';
-    }
-
-    getData() {
-        let data = super.getData();
-        data.effects = this.actor.effects;
-        return data;
+        return 'systems/srd35e/templates/items/race_sheet.html';
     }
 
     activateListeners(html) {
         super.activateListeners(html);
         if (this.isEditable) {
             html.find('.effect-control').click(ev => {
-                this.onManageActiveEffect(ev, this.actor)
+                this.onManageActiveEffect(ev, this.item)
             });
         }
+    }
+
+    getData() {
+        let data = super.getData();
+        data.effects = this.item.effects;
+        return data;
     }
 
     async onManageActiveEffect(event, owner) {
@@ -41,7 +39,7 @@ export class ActorSheetSRD35ECharacter extends ActorSheet {
         const effect = li?.dataset.effectId ? owner.effects.get(li.dataset.effectId) : null;
         switch ( a.dataset.action ) {
             case 'create': {
-                let activeEffect = ActiveEffect.create({'label': 'New Effect'}, owner);
+                let activeEffect = ActiveEffect.create({'label': 'New Effect', 'flags' : {'modifierType': 'racial'}}, owner);
                 let ae = await activeEffect.create({});
                 let eff = await owner.effects.get(ae._id);
                 return eff.sheet.render(true);
@@ -54,4 +52,5 @@ export class ActorSheetSRD35ECharacter extends ActorSheet {
                 return effect.update({disabled: !effect.data.disabled});
         }
     }
+
 }
