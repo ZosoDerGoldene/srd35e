@@ -32,7 +32,6 @@ export class ItemSheetSRD35ERace extends ItemSheet {
         let data = super.getData();
         data.effects = this.item.effects;
         data.modifierTypes = Object.keys(SRD35E.modifierTypes);
-        console.log(data.modifierTypes);
         return data;
     }
 

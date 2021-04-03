@@ -2,6 +2,7 @@ import {ActorSheetSRD35ECharacter} from "./module/actor/sheet/character.js";
 import {ActorSRD35E} from "./module/actor/entity.js"
 import {ItemSRD35E} from "./module/item/entity.js";
 import {ItemSheetSRD35ERace} from "./module/item/sheet/race.js";
+import {SRD35EActiveEffectConfig} from "./module/activeEffectConfig.js";
 
 var Zoso_ASCII = "  ______                  _____ _____  _____    ____   _____  \n" +
                  " |___  /                 / ____|  __ \\|  __ \\  |___ \\ | ____| \n" +
@@ -28,6 +29,7 @@ Hooks.once('init', async function() {
     Actors.registerSheet('SRD35E', ActorSheetSRD35ECharacter, { types: ['character'], makeDefault: true });
     Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet('SRD35E', ItemSheetSRD35ERace, { types: ['race'], makeDefault: true });
+    CONFIG.ActiveEffect.sheetClass = SRD35EActiveEffectConfig;
 });
 
 Hooks.on('applyActiveEffect', (actor, change) => {
@@ -40,7 +42,7 @@ Hooks.on('applyActiveEffect', (actor, change) => {
 });
 
 Hooks.on('updateActiveEffect', (entity,data,options,userId) => {
-    // Nothing to do here currently;
+    console.log(data);
 });
 
 Hooks.on('createActiveEffect', (entity, data, options, userId) => {
