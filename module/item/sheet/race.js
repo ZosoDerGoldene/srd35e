@@ -1,3 +1,5 @@
+import {SRD35E} from "../../config.js";
+
 export class ItemSheetSRD35ERace extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(
@@ -29,6 +31,8 @@ export class ItemSheetSRD35ERace extends ItemSheet {
     getData() {
         let data = super.getData();
         data.effects = this.item.effects;
+        data.modifierTypes = Object.keys(SRD35E.modifierTypes);
+        console.log(data.modifierTypes);
         return data;
     }
 

@@ -20,46 +20,57 @@ SRD35E.abilities_tla = {
 
 SRD35E.modifierTypes = {
     "unnamed" : {
+        "id" : "unnamed",
         "stacks" : true,
         "bonusOnly" : false
     },
     "ability" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : false
     },
     "alchemical" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : true
     },
     "armor" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : true
     },
     "circumstance" : {
+        "id" : "unnamed",
         "stacks" : true,
         "bonusOnly" : false
     },
     "competence" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : false
     },
     "deflection" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : true
     },
     "dodge" : {
+        "id" : "unnamed",
         "stacks" : true,
         "bonusOnly" : true
     },
     "enhancement" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : true
     },
     "insight" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : true
     },
     "luck" : {
+        "id" : "unnamed",
         "stacks" : false,
         "bonusOnly" : false
     },

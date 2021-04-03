@@ -50,6 +50,12 @@ Hooks.on('createActiveEffect', (entity, data, options, userId) => {
     }
 });
 
+Hooks.on('updateItem', (x,y,z) => {
+    console.log(x);
+    console.log(y);
+    console.log(z);
+});
+
 Hooks.on('createOwnedItem', async function(parent, item, options, userId) {
     if (item.type === 'race') {
         let otherRaces = parent.items.filter((i) => i.type === 'race' && (i._id != item._id));

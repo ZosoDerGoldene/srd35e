@@ -26,6 +26,15 @@
                     </div>
                     <div class="effect-source">{{effect.sourceName}}</div>
                     <div class="effect-duration">{{effect.duration.label}}</div>
+                    <div>
+                        <select name="effect.data.flags.modifierType">
+                            {{#select effect.data.flags.modifierType}}
+                                {{#each ../modifierTypes as |mt|}}
+                                    <option value="{{mt}}">{{mt}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
                     <div class="item-controls effect-controls flexrow">
                         <a class="effect-control" data-action="toggle" title="{{localize 'DND5E.EffectToggle'}}">
                             <i class="fas {{#if effect.data.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
@@ -40,7 +49,9 @@
                 </li>
                 {{/each}}
             </ol>
+            <ol>
 
+            </ol>
         </div>
     </section>
 </form>
